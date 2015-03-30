@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">  <head>
+    <title>Homework 3</title>
+    <style type="text/css"  id="internalStyle">
+      body { background-color: white }
+      h1 { text-align: center }
+      .button { border: thin solid; }
+      span { padding: 1px; }
+      li { padding-top: 2px; padding-bottom: 2px; }
+    </style>
+  </head>
+  <body>
+    <h1>Homework 3</h1>
+
+    <ul>
+      <li><span class="button">Click here</span> to expand the list</li>
+      <li><span class="button">And now for something completely different&hellip;</span></li>
+    </ul>
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+  // <![CDATA[
+$(document).ready(function() {
+   $("h1").mouseenter(function() {
+         //alert("test");
+        $(".button").css('backgroundColor', 'green');
+         });  
+    $("h1").mouseleave(function() {
+         $(".button").css('backgroundColor', 'white');
+    });
+    
+    $(":contains('Click here')").click(function() {
+     // alert("test");
+    $(this).parent("li:not(:has(ul))").append("<ul><li></li></ul>");
+    $(this).parent("li").find("li").append('<input type = "button" value = "Delete me!">');
+    $("[type = 'button']:last").click(function() {
+    $(this).remove();
+    });
+    });
+    $("span:contains('And now for something completely different')").click(function() {
+    $(this).replaceWith("<span>Nobody expects the Spanish Inquisition!</span>");
+    $("span:contains('Nobody expects the Spanish Inquisition!')").css({'backgroundColor':'black', 'color':'limegreen'});
+    });
+    });
+   // ]]>
+</script>
+</body>
+</html>
